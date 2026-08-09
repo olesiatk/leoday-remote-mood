@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import quizzes from './quizzes.js';
+import { useState, type CSSProperties } from 'react';
+import quizzes, { type Quiz, type QuizOption } from './quizzes';
 
-function pickRandomQuiz(excludeIds) {
+function pickRandomQuiz(excludeIds: string[]): Quiz {
   const pool = quizzes.filter((q) => !excludeIds.includes(q.id));
   return pool[Math.floor(Math.random() * pool.length)]; // NOSONAR - UI randomness only, not security-sensitive
 }
 
 export default function MoodMeter() {
-  const [currentQuiz, setCurrentQuiz] = useState(() => pickRandomQuiz([]));
-  const [answeredIds, setAnsweredIds] = useState([]);
-  const [response, setResponse] = useState(null);
+  const [currentQuiz, setCurrentQuiz] = useState<Quiz>(() => pickRandomQuiz([]));
+  const [answeredIds, setAnsweredIds] = useState<string[]>([]);
+  const [response, setResponse] = useState<string | null>(null);
 
-  const handleVote = (option) => {
+  const handleVote = (option: QuizOption) => {
     setResponse(option.response);
     setAnsweredIds((prev) => (prev.includes(currentQuiz.id) ? prev : [...prev, currentQuiz.id]));
 
@@ -75,7 +75,7 @@ export default function MoodMeter() {
   );
 }
 
-const btnStyle = {
+const btnStyle: CSSProperties = {
   background: '#21262d',
   border: '1px solid #30363d',
   color: '#ffffff',
@@ -84,7 +84,7 @@ const btnStyle = {
   cursor: 'pointer',
 };
 
-const resultStyle = {
+const resultStyle: CSSProperties = {
   marginTop: '15px',
   padding: '10px',
   background: 'rgba(87, 177, 45, 0.15)',
@@ -97,7 +97,7 @@ const resultStyle = {
   gap: '10px',
 };
 
-const nextBtnStyle = {
+const nextBtnStyle: CSSProperties = {
   background: 'transparent',
   border: 'none',
   fontSize: '1.4em',

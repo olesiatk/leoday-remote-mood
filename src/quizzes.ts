@@ -1,4 +1,17 @@
-const quizzes = [
+export interface QuizOption {
+  label: string;
+  response: string;
+}
+
+export interface Quiz {
+  id: string;
+  emoji: string;
+  title: string;
+  subtitle: string;
+  options: QuizOption[];
+}
+
+const quizzes: Quiz[] = [
   {
     id: 'coffee',
     emoji: '☕',

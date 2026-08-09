@@ -10,13 +10,13 @@ export default defineConfig({
       filename: 'remoteEntry.js',
       exposes: {
         // Exposing the MoodMeter component to Host
-        './MoodMeter': './src/MoodMeter.jsx',
+        './MoodMeter': './src/MoodMeter.tsx',
       },
       shared: ['react', 'react-dom'],
     }),
   ],
   server: {
-    host: true, 
+    host: true,
     port: 3001,
     strictPort: true,
     cors: true

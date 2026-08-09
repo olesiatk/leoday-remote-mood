@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import MoodMeter from './MoodMeter.jsx';
+import MoodMeter from './MoodMeter';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <MoodMeter />
   </React.StrictMode>
